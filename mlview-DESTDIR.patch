@@ -1,0 +1,39 @@
+--- mlview-0.0.1.9/Makefile.am.wiget	Tue Apr  2 17:27:41 2002
++++ mlview-0.0.1.9/Makefile.am	Tue Apr  2 17:30:43 2002
+@@ -22,25 +22,25 @@
+ 
+ install-data-local:
+ #Install xml catalog stuffs + stock DTDs
+-	$(mkinstalldirs) $(datadir)/$(MLVIEW_DIR_NAME)
+-	cp -rf entities-catalog $(datadir)/$(MLVIEW_DIR_NAME)
+-	-find $(datadir)/$(MLVIEW_DIR_NAME) -name "Makefile*" -exec rm {} \;
+-	-find $(datadir)/$(MLVIEW_DIR_NAME) -type d -name "CVS" -exec rm -rf {} \;
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME)
++	cp -rf entities-catalog $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME)
++	-find $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME) -name "Makefile*" -exec rm {} \;
++	-find $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME) -type d -name "CVS" -exec rm -rf {} \;
+ 	echo "dir is $(MLVIEW_DATA_DIR)"
+ 	echo "s/@@mlview_data_dir@@/$(subst /,\/,$(MLVIEW_DATA_DIR))/g" > sed-script
+ 	echo "s/@@mlview_dir_name@@/$(subst /,\/,$(MLVIEW_DIR_NAME))/g" >> sed-script
+ 	echo "s/@@mlview_xml_catalog_dir_name@@/$(subst /,\/,$(MLVIEW_XML_CATALOG_DIR_NAME))/g" >> sed-script
+-	cat $(datadir)/$(MLVIEW_DIR_NAME)/entities-catalog/catalog.xml | sed -f sed-script > $(datadir)/$(MLVIEW_DIR_NAME)/entities-catalog/catalog.xml.out
+-	mv $(datadir)/$(MLVIEW_DIR_NAME)/entities-catalog/catalog.xml.out $(datadir)/$(MLVIEW_DIR_NAME)/entities-catalog/catalog.xml
++	cat $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME)/entities-catalog/catalog.xml | sed -f sed-script > $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME)/entities-catalog/catalog.xml.out
++	mv $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME)/entities-catalog/catalog.xml.out $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME)/entities-catalog/catalog.xml
+ 	rm sed -f sed-script
+ #Make some aliases on mlv binaries
+-	-if test -x $(bindir)/mlv ; then \
+-	ln -s $(bindir)/mlv $(bindir)/mlview ; \
+-	ln -s $(bindir)/mlv $(bindir)/gnome-mlview ; \
+-	ln -s $(bindir)/mlv $(bindir)/gmlview ;\
++	-if test -x $(DESTDIR)$(bindir)/mlv ; then \
++	ln -s ./mlv $(DESTDIR)$(bindir)/mlview ; \
++	ln -s ./mlv $(DESTDIR)$(bindir)/gnome-mlview ; \
++	ln -s ./mlv $(DESTDIR)$(bindir)/gmlview ;\
+ 	fi ;
+ uninstall-local:
+-	rm -rf $(datadir)/$(MLVIEW_DIR_NAME)
++	rm -rf $(DESTDIR)$(datadir)/$(MLVIEW_DIR_NAME)
+ 
+ RPM_ROOT_DIR:=mlview_rpms
+ 

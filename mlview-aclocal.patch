@@ -1,0 +1,44 @@
+--- mlview-0.0.1.9/configure.in.wiget	Tue Apr  2 17:12:25 2002
++++ mlview-0.0.1.9/configure.in	Tue Apr  2 17:13:48 2002
+@@ -6,7 +6,6 @@
+ 
+ AC_PROG_INSTALL
+ 
+-AM_ACLOCAL_INCLUDE(macros)
+ GNOME_INIT
+ GNOME_COMPILE_WARNINGS
+ 
+@@ -116,4 +115,4 @@
+ pixmaps/Makefile 
+ po/Makefile.in
+ src/Makefile
+-])
+\ No newline at end of file
++])
+--- mlview-0.0.1.9/Makefile.am.wiget	Tue Apr  2 17:12:45 2002
++++ mlview-0.0.1.9/Makefile.am	Tue Apr  2 17:13:36 2002
+@@ -13,6 +13,7 @@
+ MLVIEW_DIR_NAME := @MLVIEW_DIR_NAME@
+ MLVIEW_XML_CATALOG_DIR_NAME := @MLVIEW_XML_CATALOG_DIR_NAME@
+ MLVIEW_DATA_DIR := @MLVIEW_DATA_DIR@
++ACLOCAL_AMFLAGS = -Imacros
+ 
+ SUBDIRS= intl po macros src pixmaps entities-catalog
+ EXTRA_DIST=mlview.spec BRANCHES
+@@ -51,4 +52,4 @@
+ 	if test -f $(HOME)/.rpmmacros ; then mv $(HOME)/.rpmmacros $(HOME)/.rpmmacros.my.orig ; fi
+ 	echo "%_topdir $(RPM_TOP_DIR)" > $(HOME)/.rpmmacros
+ 	rpm -v -ba $(MLVIEW_RPM_SPEC_FILE)
+-	if test -f $(HOME)/.rpmmacros.my.orig ; then mv $(HOME)/.rpmmacros.my.orig $(HOME)/.rpmmacros ; fi
+\ No newline at end of file
++	if test -f $(HOME)/.rpmmacros.my.orig ; then mv $(HOME)/.rpmmacros.my.orig $(HOME)/.rpmmacros ; fi
+--- mlview-0.0.1.9/configure.in.wiget	Tue Apr  2 17:16:03 2002
++++ mlview-0.0.1.9/configure.in	Tue Apr  2 17:17:53 2002
+@@ -8,6 +8,7 @@
+ 
+ GNOME_INIT
+ GNOME_COMPILE_WARNINGS
++AM_CONDITIONAL([INSIDE_GNOME_COMMON],[false])
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
