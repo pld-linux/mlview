@@ -39,7 +39,8 @@ z graficznym interfejsem.
 glib-gettextize --copy --force
 intltoolize --copy --force
 %configure \
-	--disable-static
+	--disable-static \
+	--disable-schemas-install
 %{__make}
 
 %install
