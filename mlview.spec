@@ -8,12 +8,16 @@ Group:		X11/Applications/Editors
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
 # Source0-md5:	0cbdd1b55f8ad7aa1769ddac38ffea9d
 URL:		http://www.freespiders.org/projects/gmlview/
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
 BuildRequires:	libtool
+BuildRequires:	libglade2-devel >= 2.0
+BuildRequires:	libgnome-devel >= 2.2
+BuildRequires:	eel-devel >= 2.2
+BuildRequires:	libgnomeui-devel >= 2.0
+BuildRequires:	libxslt >= 1.0.33
 BuildRequires:	libxml2-devel >= 2.4.18
+BuildRequires:	gtk+2-devel >= 2.2
 Requires(post):	/sbin/ldconfig
 Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,10 +38,6 @@ z graficznym interfejsem.
 %build
 glib-gettextize --copy --force
 intltoolize --copy --force
-%{__libtoolize}
-%{__aclocal}
-%{__automake}
-%{__autoconf}
 %configure \
 	--disable-static
 %{__make}
