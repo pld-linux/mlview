@@ -2,12 +2,13 @@ Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML-a dla GNOME
 Name:		mlview
 Version:	0.7.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.7/%{name}-%{version}.tar.bz2
 # Source0-md5:	31826473d4dc8471daf8b6df92e7ee3c
 Patch0:		%{name}-locale-names.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://www.freespiders.org/projects/gmlview/
 Buildrequires:	GConf2-devel >= 2.6.0
 BuildRequires:	autoconf >= 2.52
@@ -39,8 +40,9 @@ z graficznym interfejsem.
 
 %prep
 %setup -q
-%patch0 -p1                                                                     
-                                                                                
+%patch0 -p1
+%patch1 -p1
+
 mv po/{no,nb}.po
 
 %build
