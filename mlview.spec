@@ -2,7 +2,7 @@ Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML-a dla GNOME
 Name:		mlview
 Version:	0.7.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://ftp.gnome.org/pub/gnome/sources/mlview/0.7/%{name}-%{version}.tar.bz2
@@ -10,22 +10,23 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/mlview/0.7/%{name}-%{version}.ta
 Patch0:		%{name}-locale-names.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.freespiders.org/projects/gmlview/
-BuildRequires:	GConf2-devel >= 2.6.0
+BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	eel-devel >= 2.6.0
+BuildRequires:	eel-devel >= 2.10.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	gtk+2-devel >= 2:2.4.0
-BuildRequires:	intltool >= 0.25
-BuildRequires:	libglade2-devel >= 1:2.4.0
-BuildRequires:	libgnome-devel >= 2.6.0
+BuildRequires:	gtk+2-devel >= 2:2.6.4
+BuildRequires:	intltool >= 0.33
+BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnome-devel >= 2.10.0-2
 #BuildRequires:	libgnomeui-devel >= 2.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.6.11
-BuildRequires:	libxslt >= 1.1.8
-Requires(post):	/sbin/ldconfig
-Requires(post):	GConf2
+BuildRequires:	libxml2-devel >= 1:2.6.19
+BuildRequires:	libxslt >= 1.1.14
+BuildRequires:	rpmbuild(macros) >= 1.196
+Requires(post,postun):	/sbin/ldconfig
+Requires(post,preun):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,10 +60,13 @@ intltoolize --copy --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
+
+install -d $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+cp $RPM_BUILD_ROOT%{_datadir}/%{name}/%{name}-app-icon.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 # Remove useless static file
 rm -f $RPM_BUILD_ROOT%{_libdir}/libmlview.la
@@ -74,9 +78,17 @@ rm -fr $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-%gconf_schema_install
+%gconf_schema_install /etc/gconf/schemas/mlview.schemas
 
-%postun	-p /sbin/ldconfig
+%preun
+if [ $1 = 0]; then
+	%gconf_schema_uninstall /etc/gconf/schemas/mlview.schemas
+fi
+
+%postun
+if [ $1 = 0]; then
+	/sbin/ldconfig
+fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -84,5 +96,5 @@ rm -fr $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/mlview
 %{_desktopdir}/mlview.desktop
-#%{_pixmapsdir}/*
+%{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/*
