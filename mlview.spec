@@ -1,16 +1,18 @@
+
+%define	_rcver		rc2
+
 Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML dla GNOME
 Name:		mlview
-Version:	0.0.2
-Release:	2
+Version:	0.0.3
+Release:	0.%{_rcver}.1
 License:	GPL
 Group:		X11/Applications/Editors
-Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}.tar.gz
-# Source0-md5:	37b83010c2f0b9602e311110345d62db
+Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}%{_rcver}.tar.gz
+# Source0-md5:	7785e633e4d336c4aa736fa5b2da8528
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-aclocal.patch
-Patch1:		%{name}-ac_fixes.patch
 URL:		http://www.freesoftware.fsf.org/mlview/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -32,9 +34,8 @@ Umo¿liwia przegl±danie, modyfikowanie oraz zapisywanie dokumentów XML
 z graficznym interfejsem.
 
 %prep
-%setup  -q
+%setup -q -n %{name}-%{version}%{_rcver}
 %patch0 -p1
-%patch1 -p1
 
 %build
 rm -f missing
