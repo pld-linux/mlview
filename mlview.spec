@@ -2,7 +2,7 @@ Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML dla GNOME
 Name:		mlview
 Version:	0.0.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}.tar.gz
@@ -49,12 +49,12 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Editors,%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_applnkdir}/Editors/XML,%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Editors
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Editors/XML
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %find_lang %{name} --with-gnome
@@ -73,5 +73,5 @@ rm -fr $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gmlview
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/gnome-mlview
-%{_applnkdir}/Office/Editors/mlview.desktop
+%{_applnkdir}/Editors/XML/mlview.desktop
 %{_pixmapsdir}/*
