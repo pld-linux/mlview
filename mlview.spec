@@ -1,12 +1,13 @@
 Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML-a dla GNOME
 Name:		mlview
-Version:	0.6.2
+Version:	0.6.3
 Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	0cbdd1b55f8ad7aa1769ddac38ffea9d
+# Source0-md5:	6975d10f92deddfee4b02153aafc6bcd
+Patch0:		%{name}-locale-names.patch
 URL:		http://www.freespiders.org/projects/gmlview/
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
@@ -34,10 +35,17 @@ z graficznym interfejsem.
 
 %prep
 %setup -q
+%patch0 -p1                                                                     
+                                                                                
+mv po/{no,nb}.po
 
 %build
 glib-gettextize --copy --force
 intltoolize --copy --force
+%{__libtoolize}                                                                 
+%{__aclocal} -I %{_aclocaldir}/gnome2-macros                                    
+%{__autoconf}                                                                   
+%{__automake}    
 %configure \
 	--disable-static \
 	--disable-schemas-install
@@ -49,6 +57,9 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# Remove useless static file
+rm -f $RPM_BUILD_ROOT%{_libdir}/libmlview.la
 
 %find_lang %{name} --with-gnome
 
@@ -67,5 +78,5 @@ rm -fr $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/mlview
 %{_desktopdir}/mlview.desktop
-%{_pixmapsdir}/*
+#%{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/*
