@@ -6,6 +6,8 @@ Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}.tar.gz
+Patch0:		%{name}-aclocal.patch
+Patch1:		%{name}-DESTDIR.patch
 URL:		http://www.freesoftware.fsf.org/mlview/
 BuildRequires:	gnome-libs-devel >= 1.2.11
 BuildRequires:	libxml2-devel >= 2.4.18 
@@ -24,13 +26,15 @@ Umo¿liwia przegl±danie, modyfikowanie oraz zapisywanie dokumentów XML
 z graficznym interfejsem.
 
 %prep
-%setup -q
+%setup  -q
+%patch0 -p1
+%patch1 -p1
 
 %build
-#aclocal
-#automake
-#autoconf
-%configure2_13
+aclocal -I %{_aclocaldir}/gnome
+automake -a -c -f
+autoconf
+%configure
 %{__make}
 
 %install
