@@ -1,25 +1,28 @@
 Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML-a dla GNOME
 Name:		mlview
-Version:	0.6.3
+Version:	0.7.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	6975d10f92deddfee4b02153aafc6bcd
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	31826473d4dc8471daf8b6df92e7ee3c
 Patch0:		%{name}-locale-names.patch
 URL:		http://www.freespiders.org/projects/gmlview/
+Buildrequires:	GConf2-devel >= 2.6.0
+BuildRequires:	autoconf >= 2.52
+BuildRequires:	automake
+BuildRequires:	eel-devel >= 2.6.0
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0
-BuildRequires:	intltool
+BuildRequires:	gtk+2-devel >= 2:2.4.0
+BuildRequires:	intltool >= 0.25
+BuildRequires:	libglade2-devel >= 1:2.4.0
+BuildRequires:	libgnome-devel >= 2.6.0
+#BuildRequires:	libgnomeui-devel >= 2.0
 BuildRequires:	libtool
-BuildRequires:	libglade2-devel >= 2.0
-BuildRequires:	libgnome-devel >= 2.2
-BuildRequires:	eel-devel >= 2.2
-BuildRequires:	libgnomeui-devel >= 2.0
-BuildRequires:	libxslt >= 1.0.33
-BuildRequires:	libxml2-devel >= 2.4.18
-BuildRequires:	gtk+2-devel >= 2.2
+BuildRequires:	libxml2-devel >= 2.6.11
+BuildRequires:	libxslt >= 1.1.8
 Requires(post):	/sbin/ldconfig
 Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
