@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=MlView
 Comment=MlView - XML editor for GNOME
-Comment[fr]=MlView - Éditeur XML pour GNOME
+Comment[fr]=MlView - Ã‰diteur XML pour GNOME
 Comment[pl]=MlView - edytor XML dla GNOME
 Icon=mlview.png
 Exec=mlv
