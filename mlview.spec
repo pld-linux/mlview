@@ -14,6 +14,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.18
+Requires(post):	/sbin/ldconfig
+Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -52,11 +54,11 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 %clean
 rm -fr $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-
-%postun
+%post
 /sbin/ldconfig
 %gconf_schema_install
+
+%postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
