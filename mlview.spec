@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}.tar.gz
+# Source0-md5:	37b83010c2f0b9602e311110345d62db
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-aclocal.patch
