@@ -1,23 +1,19 @@
-
-%define	_rcver		rc2
-
 Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML dla GNOME
 Name:		mlview
-Version:	0.0.3
-Release:	0.%{_rcver}.1
+Version:	0.6.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
-Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}%{_rcver}.tar.gz
-# Source0-md5:	7785e633e4d336c4aa736fa5b2da8528
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	68dabfc2844971ec0dd632bda8b54777
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-aclocal.patch
+Patch0:		%{name}-desktop.patch
 URL:		http://www.freesoftware.fsf.org/mlview/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-libs-devel >= 1.2.11
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.18
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,28 +30,28 @@ Umo¿liwia przegl±danie, modyfikowanie oraz zapisywanie dokumentów XML
 z graficznym interfejsem.
 
 %prep
-%setup -q -n %{name}-%{version}%{_rcver}
+%setup -q
 %patch0 -p1
 
 %build
-rm -f missing
-%{__gettextize}
+glib-gettextize --copy --force
+intltoolize --copy --force
 %{__libtoolize}
-%{__aclocal} -I %{_aclocaldir}/gnome
-%{__autoconf}
+%{__aclocal}
 %{__automake}
+%{__autoconf}
 %configure \
 	--disable-static
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Editors/XML,%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Editors/XML
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %find_lang %{name} --with-gnome
@@ -74,5 +70,5 @@ rm -fr $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gmlview
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/gnome-mlview
-%{_applnkdir}/Editors/XML/mlview.desktop
+%{_desktopdir}/mlview.desktop
 %{_pixmapsdir}/*
