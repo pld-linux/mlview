@@ -8,7 +8,10 @@ Group:		X11/Applications/Editors
 Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}.tar.gz
 Patch0:		%{name}-aclocal.patch
 URL:		http://www.freesoftware.fsf.org/mlview/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gnome-libs-devel >= 1.2.11
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.18 
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -29,9 +32,11 @@ z graficznym interfejsem.
 %patch0 -p1
 
 %build
+rm -f missing
+libtoolize --copy --force
 aclocal -I %{_aclocaldir}/gnome
-automake -a -c -f
 autoconf
+automake -a -c -f
 %configure
 %{__make}
 
