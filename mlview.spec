@@ -1,5 +1,5 @@
 Summary:	XML Editor for GNOME
-Summary(pl):	Edytor XML dla GNOME
+Summary(pl):	Edytor XML-a dla GNOME
 Name:		mlview
 Version:	0.6.2
 Release:	1
@@ -28,7 +28,7 @@ GNOME. It include support to view, edit, validate and save xml
 document by graphically manipulate the xml Document Object Model.
 
 %description -l pl
-gnome-mlview (GNOME Markup Language Viewer) to edytor XML dla GNOME.
+gnome-mlview (GNOME Markup Language Viewer) to edytor XML-a dla GNOME.
 Umo¿liwia przegl±danie, modyfikowanie oraz zapisywanie dokumentów XML
 z graficznym interfejsem.
 
