@@ -1,15 +1,12 @@
 Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML dla GNOME
 Name:		mlview
-Version:	0.6.0
+Version:	0.6.2
 Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	68dabfc2844971ec0dd632bda8b54777
-Source1:	%{name}.desktop
-Source2:	%{name}.png
-Patch0:		%{name}-desktop.patch
+# Source0-md5:	0cbdd1b55f8ad7aa1769ddac38ffea9d
 URL:		http://www.freespiders.org/projects/gmlview/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -31,7 +28,6 @@ z graficznym interfejsem.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 glib-gettextize --copy --force
@@ -51,24 +47,22 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
-
 %find_lang %{name} --with-gnome
 
 %clean
 rm -fr $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+
+%postun
+/sbin/ldconfig
+%gconf_schema_install
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mlv
-%attr(755,root,root) %{_bindir}/mlview
-%attr(755,root,root) %{_bindir}/gnome-mlview
-%attr(755,root,root) %{_bindir}/gmlview
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_datadir}/gnome-mlview
+%{_datadir}/mlview
 %{_desktopdir}/mlview.desktop
 %{_pixmapsdir}/*
+%{_sysconfdir}/gconf/schemas/*
