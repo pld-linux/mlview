@@ -1,19 +1,27 @@
 Summary:	XML Editor for GNOME
+Summary(pl):	Edytor XML dla GNOME
 Name:		mlview
 Version:	0.0.1.9
 Release:	1
 License:	GPL
-Group:		Applications/Editors
+Group:		X11/Applications/Editors
 Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}.tar.gz
 URL:		http://www.freesoftware.fsf.org/mlview/
+BuildRequires:	gnome-libs-devel >= 1.2.11
+BuildRequires:	libxml2-devel >= 2.4.18 
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Requires:	libxml2 >= 2.4.18 
-Requires:	gnome-libs >= 1.2.11
+
+%define		_prefix		/usr/X11R6
 
 %description
-gnome-mlview (Gnome Markup language Viewer) is an XML editor for
+gnome-mlview (Gnome Markup Language Viewer) is an XML editor for
 GNOME. It include support to view, edit, validate and save xml
 document by graphically manipulate the xml Document Object Model.
+
+%description -l pl
+gnome-mlview (Gnome Markup Language Viewer) to edytor XML dla GNOME.
+Umo¿liwia przegl±danie, modyfikowanie oraz zapisywanie dokumentów XML
+z graficznym interfejsem.
 
 %prep
 %setup -q
@@ -36,6 +44,7 @@ cat >$RPM_BUILD_ROOT%{_applnkdir}/Applications/mlview.desktop <<EOF
 Name=MlView
 Comment=MlView - XML editor for GNOME
 Comment[fr]=MlView - Éditeur XML pour GNOME
+Comment[pl]=MlView - edytor XML dla GNOME
 Exec=mlv
 Terminal=0
 Type=Application
@@ -44,10 +53,8 @@ EOF
 # there is fr file but is not correctly installed, due to generally broken AM support /klakier
 #%find_lang %{name} --with-gnome
 
-
 %clean
 rm -fr $RPM_BUILD_ROOT
-
 
 %files
 %defattr(644,root,root,755)
