@@ -19,7 +19,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.11
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.4.18 
+BuildRequires:	libxml2-devel >= 2.4.18
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 
