@@ -5,12 +5,12 @@ Version:	0.7.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.7/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/mlview/0.7/%{name}-%{version}.tar.bz2
 # Source0-md5:	85383331e5bb6d59293cee5b86595284
 Patch0:		%{name}-locale-names.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.freespiders.org/projects/gmlview/
-Buildrequires:	GConf2-devel >= 2.6.0
+BuildRequires:	GConf2-devel >= 2.6.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	eel-devel >= 2.6.0
