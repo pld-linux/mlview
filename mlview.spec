@@ -33,7 +33,7 @@ z graficznym interfejsem.
 
 %build
 rm -f missing
-libtoolize --copy --force
+%{__libtoolize}
 aclocal -I %{_aclocaldir}/gnome
 %{__autoconf}
 %{__automake}
