@@ -1,0 +1,26 @@
+diff -urN mlview-0.6.0.orig/Makefile.am mlview-0.6.0/Makefile.am
+--- mlview-0.6.0.orig/Makefile.am	Sat Sep  6 12:54:25 2003
++++ mlview-0.6.0/Makefile.am	Sat Sep  6 12:55:02 2003
+@@ -37,14 +37,14 @@
+ 	ln -s mlv gmlview ; \
+ 	fi ;
+ # Install an entry in the GNOME Applications menu:
+-	mkdir -p ${prefix}/share/gnome/apps/Applications
+-	echo "[Desktop Entry]" > ${prefix}/share/gnome/apps/Applications/mlview.desktop
+-	echo "Name=MlView" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
+-	echo "Comment=MlView - XML editor for GNOME" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
+-	echo "Comment[fr]=MlView - Éditeur XML pour GNOME" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
+-	echo "Exec=mlv" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
+-	echo "Terminal=0" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
+-	echo "Type=Application" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
++#	mkdir -p ${prefix}/share/gnome/apps/Applications
++#	echo "[Desktop Entry]" > ${prefix}/share/gnome/apps/Applications/mlview.desktop
++#	echo "Name=MlView" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
++#	echo "Comment=MlView - XML editor for GNOME" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
++#	echo "Comment[fr]=MlView - Éditeur XML pour GNOME" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
++#	echo "Exec=mlv" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
++#	echo "Terminal=0" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
++#	echo "Type=Application" >> ${prefix}/share/gnome/apps/Applications/mlview.desktop
+ 
+ uninstall-local:
+ 	-rm -rf $(datadir)/$(MLVIEW_DIR_NAME) ; \
