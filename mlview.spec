@@ -10,6 +10,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.t
 Patch0:		%{name}-locale-names.patch
 URL:		http://www.freespiders.org/projects/gmlview/
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	libglade2-devel >= 2.0
@@ -42,10 +43,10 @@ mv po/{no,nb}.po
 %build
 glib-gettextize --copy --force
 intltoolize --copy --force
-%{__libtoolize}                                                                 
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros                                    
-%{__autoconf}                                                                   
-%{__automake}    
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure \
 	--disable-static \
 	--disable-schemas-install
