@@ -6,10 +6,14 @@ Release:	1
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://freesoftware.fsf.org/download/mlview/tarballs/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
+Source2:	%{name}.png
 Patch0:		%{name}-aclocal.patch
+Patch1:		%{name}-ac_fixes.patch
 URL:		http://www.freesoftware.fsf.org/mlview/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-libs-devel >= 1.2.11
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.18 
@@ -30,44 +34,44 @@ z graficznym interfejsem.
 %prep
 %setup  -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
+%{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I %{_aclocaldir}/gnome
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--disable-static
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Editors,%{_pixmapsdir}}
 
-# Install an entry in the GNOME Applications menu:
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Applications
-cat >$RPM_BUILD_ROOT%{_applnkdir}/Applications/mlview.desktop <<EOF
-[Desktop Entry]
-Name=MlView
-Comment=MlView - XML editor for GNOME
-Comment[fr]=MlView - Éditeur XML pour GNOME
-Comment[pl]=MlView - edytor XML dla GNOME
-Exec=mlv
-Terminal=0
-Type=Application
-EOF
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
-# there is fr file but is not correctly installed, due to generally broken AM support /klakier
-#%find_lang %{name} --with-gnome
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Editors
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
+
+%find_lang %{name} --with-gnome
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %clean
 rm -fr $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mlv
 %attr(755,root,root) %{_bindir}/mlview
 %attr(755,root,root) %{_bindir}/gnome-mlview
 %attr(755,root,root) %{_bindir}/gmlview
-%{_applnkdir}/Applications/mlview.desktop
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/gnome-mlview
+%{_applnkdir}/Office/Editors/mlview.desktop
+%{_pixmapsdir}/*
