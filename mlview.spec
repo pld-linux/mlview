@@ -14,10 +14,10 @@ URL:		http://www.freespiders.org/projects/gmlview/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.18
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 gnome-mlview (GNOME Markup Language Viewer) is an XML editor for
@@ -56,11 +56,11 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %find_lang %{name} --with-gnome
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -fr $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
