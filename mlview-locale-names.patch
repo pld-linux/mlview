@@ -1,0 +1,12 @@
+diff -urN mlview-0.6.3.orig/configure.in mlview-0.6.3/configure.in
+--- mlview-0.6.3.orig/configure.in	2004-05-14 15:32:28.912413256 +0200
++++ mlview-0.6.3/configure.in	2004-05-14 15:32:45.929826216 +0200
+@@ -216,7 +216,7 @@
+ dnl ********************************************************
+ dnl languages
+ dnl ********************************************************
+-ALL_LINGUAS="az ca cs de en_CA en_GB es fr hr ja ml ms nl no pl pt pt_BR sr sr@Latn sv ru"
++ALL_LINGUAS="az ca cs de en_CA en_GB es fr hr ja ml ms nb nl pl pt pt_BR sr sr@Latn sv ru"
+ 
+ dnl ********************************************************
+ dnl triggers gettext
