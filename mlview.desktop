@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MlView
+Comment=MlView - XML editor for GNOME
+Comment[fr]=MlView - Éditeur XML pour GNOME
+Comment[pl]=MlView - edytor XML dla GNOME
+Icon=mlview.png
+Exec=mlv
+Terminal=0
+Type=Application
+# vi: encoding=utf-8
