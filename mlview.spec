@@ -10,7 +10,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.t
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-desktop.patch
-URL:		http://www.freesoftware.fsf.org/mlview/
+URL:		http://www.freespiders.org/projects/gmlview/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
