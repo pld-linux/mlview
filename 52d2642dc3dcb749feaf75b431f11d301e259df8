@@ -1,0 +1,7 @@
+- do not hardcode in configure.in CFLAGS options (ac_fixes patch added),
+- fix installing in correct path .mo files (added regenerate gettext files) and
+  finish %%find_lang support,
+- added --disable-static to autoconf options (now static mlview libraries aren't
+  built),
+- separate desktop file and added png icon for desktop (based on pixmaps/mlview-app-icon.xpm),
+- move desktop file to Office/Editors/ menu.
