@@ -24,12 +24,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 
 %description
-gnome-mlview (Gnome Markup Language Viewer) is an XML editor for
+gnome-mlview (GNOME Markup Language Viewer) is an XML editor for
 GNOME. It include support to view, edit, validate and save xml
 document by graphically manipulate the xml Document Object Model.
 
 %description -l pl
-gnome-mlview (Gnome Markup Language Viewer) to edytor XML dla GNOME.
+gnome-mlview (GNOME Markup Language Viewer) to edytor XML dla GNOME.
 Umo¿liwia przegl±danie, modyfikowanie oraz zapisywanie dokumentów XML
 z graficznym interfejsem.
 
