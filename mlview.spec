@@ -19,7 +19,6 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.4.18 
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 
 %description
 gnome-mlview (Gnome Markup Language Viewer) is an XML editor for
