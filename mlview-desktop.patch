@@ -1,12 +1,15 @@
-diff -urN mlview-0.7.0.orig/mlview.desktop.in mlview-0.7.0/mlview.desktop.in
---- mlview-0.7.0.orig/mlview.desktop.in	2004-11-05 16:01:41.430907224 +0100
-+++ mlview-0.7.0/mlview.desktop.in	2004-11-05 16:02:19.166170592 +0100
-@@ -4,7 +4,7 @@
+diff -urN mlview-0.7.1.orig/mlview.desktop.in mlview-0.7.1/mlview.desktop.in
+--- mlview-0.7.1.orig/mlview.desktop.in	2005-04-06 13:39:05.000000000 +0200
++++ mlview-0.7.1/mlview.desktop.in	2005-04-06 13:40:00.000000000 +0200
+@@ -4,9 +4,9 @@
  Type=Application
  Name=MlView XML Editor
  GenericName=MlView Generic XML Editor
 -Categories=GNOME;Application;Office;TextEditor;
 +Categories=GTK;GNOME;TextEditor;
  Comment=A generic simple and powerfull XML editor for GNOME
- Icon=mlview-app-icon.xpm
+-Icon=mlview-app-icon.xpm
++Icon=mlview.png
  TryExec=mlv
+ Exec=mlv %F
+ Terminal=false
