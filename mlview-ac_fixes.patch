@@ -1,0 +1,18 @@
+--- mlview-0.0.2/configure.in~	Wed Oct  9 20:38:45 2002
++++ mlview-0.0.2/configure.in	Wed Oct  9 20:38:45 2002
+@@ -68,15 +68,6 @@
+ 	
+ fi
+ 
+-dnl if test "${GCC}" = "yes" ; then
+-dnl 	CFLAGS="-g -Wall -pedantic -W -Wunused -Wimplicit -Wreturn-type -Wswitch -Wcomment -Wtrigraphs -Wformat -Wchar-subscripts -Wuninitialized -Wparentheses -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Waggregate-return -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Winline -Wredundant-decls "
+-dnl fi
+-
+-if test "${GCC}" = "yes" ; then
+-	CFLAGS="-g -Wall"
+-fi
+-
+-
+ AC_MSG_RESULT([found libxml2 version $MAJOR.$MINOR.$MICRO, OK])
+ 
+ dnl languages
