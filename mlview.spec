@@ -24,7 +24,7 @@ BuildRequires:	libgnome-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	libxslt >= 1.1.14
-BuildRequires:	rpmbuild(macros) >= 1.196
+BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,preun):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,8 +47,8 @@ z graficznym interfejsem.
 mv po/{no,nb}.po
 
 %build
-glib-gettextize --copy --force
-intltoolize --copy --force
+%{__glib_gettextize}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -77,18 +77,14 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libmlview.la
 rm -fr $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
-%gconf_schema_install /etc/gconf/schemas/mlview.schemas
+%gconf_schema_install mlview.schemas
+%ldconfig_post
 
 %preun
-if [ $1 = 0]; then
-	%gconf_schema_uninstall /etc/gconf/schemas/mlview.schemas
-fi
+%gconf_schema_uninstall mlview.schemas
 
 %postun
-if [ $1 = 0]; then
-	/sbin/ldconfig
-fi
+%ldconfig_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
