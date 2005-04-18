@@ -25,7 +25,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	libxslt >= 1.1.14
 BuildRequires:	rpmbuild(macros) >= 1.197
-Requires(post,postun):	/sbin/ldconfig
+Requires(post):	/sbin/ldconfig
 Requires(post,preun):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -77,14 +77,13 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libmlview.la
 rm -fr $RPM_BUILD_ROOT
 
 %post
+/sbin/ldconfig
 %gconf_schema_install mlview.schemas
-%ldconfig_post
 
 %preun
 %gconf_schema_uninstall mlview.schemas
 
-%postun
-%ldconfig_postun
+%postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
