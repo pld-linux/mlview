@@ -2,7 +2,7 @@ Summary:	XML Editor for GNOME
 Summary(pl):	Edytor XML-a dla GNOME
 Name:		mlview
 Version:	0.7.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Editors
 Source0:	http://ftp.gnome.org/pub/gnome/sources/mlview/0.7/%{name}-%{version}.tar.bz2
