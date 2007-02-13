@@ -1,5 +1,5 @@
 Summary:	XML Editor for GNOME
-Summary(pl.UTF-8):   Edytor XML-a dla GNOME
+Summary(pl.UTF-8):	Edytor XML-a dla GNOME
 Name:		mlview
 Version:	0.7.1
 Release:	3
