@@ -74,7 +74,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libmlview.la
 %find_lang %{name} --with-gnome
 
 %clean
-rm -fr $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
