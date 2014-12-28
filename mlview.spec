@@ -14,7 +14,7 @@ BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	eel-devel >= 2.10.0
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gtk+2-devel >= 2:2.6.4
 BuildRequires:	intltool >= 0.33
